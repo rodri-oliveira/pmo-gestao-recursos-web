@@ -8,7 +8,7 @@ import { buscarRecursosPorNome } from '../utils/autocomplete';
  *   onChange: função chamada com o id do recurso selecionado
  */
 export default function AutocompleteRecurso({ value, onChange, placeholder = 'Digite o nome do recurso...' }) {
-  const [inputValue, setInputValue] = useState('');
+  const [inputValue, setInputValue] = useState(value && value.nome ? value.nome : '');
   const [sugestoes, setSugestoes] = useState([]);
   const [showSugestoes, setShowSugestoes] = useState(false);
   const timeoutRef = useRef();
