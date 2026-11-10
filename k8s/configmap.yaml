@@ -1,0 +1,12 @@
+# Exemplo para configurar um ambiente isolado de demonstração.
+# Credenciais e tokens devem ser fornecidos por um gestor de segredos.
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: pmo-web-config
+data:
+  NEXTAUTH_URL: "http://localhost:3000"
+  AUTH_TRUST_HOST: "true"
+  AUTH_KEYCLOAK_ISSUER: ""
+  BACKEND_URL: "http://localhost:8000"
+  NEXT_PUBLIC_BACKEND_URL: "http://localhost:8000"
