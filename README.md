@@ -1,86 +1,41 @@
-# Automação PMO - Frontend
+# Gestão de Projetos e Recursos — Interface PMO
 
-Este projeto é a interface de frontend para o sistema de Automação do PMO, desenvolvida para fornecer dashboards, relatórios e ferramentas de gerenciamento para equipes e gestores.
+Aplicação web com **Next.js e React** para consultar projetos, acompanhar alocações e visualizar indicadores operacionais de equipes e recursos.
 
-## ✨ Funcionalidades Principais
+## Problema e solução
 
-- **Dashboard de Gestor (`/visao-gestor`):** Visualização de capacidade vs. alocação de recursos, com filtros por seção, equipe, recurso e período.
-- **Dashboard de Departamento (`/indicadores-departamento`):** KPIs sobre projetos e equipes a nível de departamento.
-- **Relatórios (`/relatorios`):** Geração de relatórios como "Planejado vs. Realizado".
-- **Gerenciamento de Alocações:** Modais para criar, editar e visualizar alocações de recursos em projetos.
-- **Integração com JIRA:** Sincronização de dados de projetos e apontamentos.
-- **Autenticação Segura:** Login via Keycloak, gerenciado pelo NextAuth.js.
+Acompanhar a capacidade de equipes e comparar o trabalho planejado com o realizado exige visualizações claras, filtros e uma interface para manutenção dos cadastros. Esta aplicação reúne essas operações em dashboards e telas administrativas.
 
-## 🚀 Stack Tecnológica
+## Funcionalidades presentes no repositório
 
-- **Framework:** [Next.js](https://nextjs.org/) (React)
-- **UI Components:** [Material-UI (MUI)](https://mui.com/)
-- **Gráficos:** [ECharts for React](https://echarts.apache.org/)
-- **Autenticação:** [NextAuth.js](https://next-auth.js.org/)
-- **HTTP Client:** [Axios](https://axios-http.com/) (encapsulado em `services/api.js`)
+- **Visão do gestor:** indicadores de capacidade e alocação.
+- **Indicadores de departamento:** dashboards e consultas por agrupamentos.
+- **Gerenciamento:** seções, equipes, recursos, projetos e alocações.
+- **Relatórios:** horas apontadas e comparação **planejado × realizado**.
+- **Administração:** usuários, configurações, logs e integração com sistema externo.
+- Fluxo de login e componentes de gerenciamento de sessão.
 
-## ⚙️ Configuração do Ambiente de Desenvolvimento
+## Tecnologias
 
-Siga os passos abaixo para configurar o ambiente local.
+**Next.js 14 · React 18 · Material UI · ECharts · Axios · NextAuth**
 
-### 1. Pré-requisitos
+As páginas ficam em `app/`, os componentes em `components/` e as chamadas à API em `services/`.
 
-- [Node.js](https://nodejs.org/) (versão 18 ou superior)
-- [npm](https://www.npmjs.com/)
+**API associada:** [PMO — Backend](https://github.com/rodri-oliveira/pmo-gestao-recursos-api).
 
-### 2. Instalação de Dependências
-
-Clone o repositório e instale as dependências:
+## Execução local
 
 ```bash
 npm install
-```
-
-### 3. Variáveis de Ambiente
-
-Crie um arquivo `.env.local` na raiz do projeto. Este arquivo **não** deve ser versionado. Adicione as seguintes variáveis:
-
-| Variável | Descrição | Exemplo |
-| :--- | :--- | :--- |
-| `AUTH_KEYCLOAK_ID` | Client ID da aplicação no Keycloak. | `automacao-pmo-frontend` |
-| `AUTH_KEYCLOAK_SECRET` | Client Secret da aplicação no Keycloak. | `seu-client-secret-aqui` |
-| `AUTH_SECRET` | Chave secreta para encriptação da sessão do NextAuth. Gere uma com `openssl rand -base64 32`. | `chave-aleatoria-gerada` |
-| `AUTH_KEYCLOAK_ISSUER` | URL base do provedor Keycloak. | `https://auth-qa.weg.net/realms/weg` |
-| `NEXT_PUBLIC_API_URL` | URL do backend que o frontend irá consumir. | `http://localhost:8000` |
-
-### 4. Rodando o Servidor
-
-Com as dependências e variáveis de ambiente configuradas, inicie o servidor de desenvolvimento:
-
-```bash
 npm run dev
 ```
 
-Acesse [http://localhost:3000](http://localhost:3000) no seu navegador para ver a aplicação.
+Em desenvolvimento, o frontend costuma ser servido em `http://localhost:3000`.
 
-## 📂 Estrutura de Pastas
+**Limitações:** dashboards, login e relatórios dependem de uma API, dados e autenticação configurados. O funcionamento completo fora da implantação original **não foi testado** nesta revisão. Não utilize configurações ou credenciais de serviços de terceiros.
 
-- **/app:** Contém as rotas e páginas da aplicação, seguindo o App Router do Next.js.
-- **/components:** Componentes React reutilizáveis (ex: gráficos, modais, tabelas).
-- **/lib:** Funções utilitárias e configurações globais (ex: `api.js` para configuração do Axios).
-- **/public:** Arquivos estáticos, como imagens e fontes.
-- **/services:** Funções que encapsulam as chamadas à API backend.
-- **/k8s:** Arquivos de configuração para deploy em Kubernetes (ConfigMap, Deployment).
+## Competências demonstradas
 
-## 📜 Scripts Disponíveis
+Interfaces administrativas, componentes reutilizáveis, visualização de dados e integração frontend/backend.
 
-- `npm run dev`: Inicia o servidor em modo de desenvolvimento.
-- `npm run build`: Compila a aplicação para produção.
-- `npm run start`: Inicia um servidor de produção após o `build`.
-- `npm run lint`: Executa o linter para análise de código.
-
-## 🌐 Deploy
-
-O deploy é automatizado via GitLab CI/CD, utilizando o arquivo `.gitlab-ci.yml`.
-
-O processo consiste em:
-1.  **Build:** Construção da imagem Docker a partir do `Dockerfile`.
-2.  **Push:** Envio da imagem para o registro de contêineres.
-3.  **Deploy:** Aplicação dos manifestos Kubernetes (`k8s/`) no cluster, que criam/atualizam o `Deployment` e o `Service`, injetando as variáveis de ambiente a partir do `ConfigMap`.
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
+**Status:** aplicação histórica de portfólio; dependências externas a substituir para demonstração independente.
