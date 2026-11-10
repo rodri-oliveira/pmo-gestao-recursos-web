@@ -32,10 +32,10 @@ npm run dev
 
 Em desenvolvimento, o frontend costuma ser servido em `http://localhost:3000`.
 
-**Limitações:** dashboards, login e relatórios dependem de uma API, dados e autenticação configurados. O funcionamento completo fora da implantação original **não foi testado** nesta revisão. Não utilize configurações ou credenciais de serviços de terceiros.
+**Pré-requisitos para demonstração:** API PMO, base de dados de exemplo e provedor de autenticação configurados. Sem esses componentes, o servidor de desenvolvimento pode iniciar, mas as operações integradas não estarão disponíveis.
 
 ## Competências demonstradas
 
 Interfaces administrativas, componentes reutilizáveis, visualização de dados e integração frontend/backend.
 
-**Status:** aplicação histórica de portfólio; dependências externas a substituir para demonstração independente.
+**Status:** interface documentada; demonstração integral depende dos serviços de apoio.
