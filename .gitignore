@@ -37,3 +37,9 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# Configuracoes locais e segredos (nao versionar)
+.env*
+!.env.example
+*.key
+*.p12
